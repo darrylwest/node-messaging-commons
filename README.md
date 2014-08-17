@@ -2,7 +2,7 @@
 - - -
 
 ## Introduction
-Library of pub/sub channel support for secure web socket messaging.
+A websocket library of pub/sub support for secure web socket messaging.
 
 ## API
 
