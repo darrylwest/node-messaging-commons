@@ -8,7 +8,7 @@
     "url": "https://github.com/darrylwest/node-messaging-commons.git"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt test validate-package"
   },
   "dependencies": {
     "commander": "^2.3.0",

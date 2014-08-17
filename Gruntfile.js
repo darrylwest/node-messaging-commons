@@ -43,8 +43,7 @@ module.exports = function(grunt) {
                 '<%= dirs.lib %>/*.js',
                 '<%= dirs.lib %>/*/*.js',
                 '<%= dirs.test %>/*.js',
-                '<%= dirs.test %>/*/*.js',
-                '!lib/FeedbackConverter.js'
+                '<%= dirs.test %>/*/*.js'
             ]
         },
         mochaTest: {
@@ -67,8 +66,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('test', [
         'mochaTest',
-        'jshint',
-        'validate-package'
+        'jshint'
     ]);
 
     grunt.registerTask('default', [
