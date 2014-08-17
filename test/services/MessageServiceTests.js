@@ -6,7 +6,7 @@
  */
 var should = require('chai').should(),
     dash = require('lodash'),
-    LogManager = require('../../app/delegates/LogManager'),
+    MockLogger = require('simple-node-logger').mocks.MockLogger,
     Config = require('../../app/controllers/Config'),
     MessageSocketService = require('../../app/services/MessageSocketService');
 
@@ -16,7 +16,7 @@ describe('MessageSocketService', function() {
     var createOptions = function() {
         var opts = new Config.test();
 
-        opts.log = new LogManager( opts ).createLogger('MessageSocketService');
+        opts.log = MockLogger.createLogger('MessageSocketService');
 
         return opts;
     };

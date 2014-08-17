@@ -5,6 +5,7 @@
  */
 var should = require('chai').should(),
     dash = require('lodash'),
+    MockLogger = require('simple-node-logger').mocks.MockLogger,
     Config = require('../../app/controllers/Config'),
     ApplicationFactory = require('../../app/controllers/ApplicationFactory');
 
@@ -13,6 +14,8 @@ describe('ApplicationFactory', function() {
 
     var createOptions = function() {
         var opts = new Config.test();
+
+        opts.logManager = MockLogger;
 
         return opts;
     };

@@ -2,17 +2,19 @@
   "name": "node-messaging-commons",
   "version": "00.90.05",
   "description": "A websocket library of pub/sub support for secure web socket messaging.",
-  "private": true,
-  "author": "darryl.west@raincitysoftware.com.com",
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/darrylwest/node-messaging-commons.git"
+  },
   "scripts":{
     "test":"grunt test"
   },
   "dependencies": {
-    "moment": ">= 2.0",
-    "lodash": "1.x",
-    "node-uuid": "*",
-    "commander": "1.x",
-    "faye": "~1.0.1"
+    "commander": "^2.3.0",
+    "lodash": "~2.4.1",
+    "moment": "^2.8.1",
+    "node-uuid": "~1.4.1",
+    "simple-node-logger": "^0.91.91"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
@@ -25,10 +27,14 @@
     "time-grunt": "~0.1.1",
     "grunt-concurrent": "~0.3.0",
     "grunt-mocha-test": "~0.8.1",
+    "grunt-nsp-package": "0.0.5",
     "mocha": "~1.16.2",
     "chai": "~1.8.1",
     "express-mocks-http": "0.0.11",
     "grunt-contrib-watch": "~0.5.3",
     "casual": "~1.4.5"
-  }
+  },
+  "author": "darryl.west@raincitysoftware.com",
+  "license": "Apache 2.0",
+  "homepage": "https://github.com/darrylwest/web-app-runner"
 }

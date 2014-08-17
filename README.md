@@ -1,8 +1,10 @@
 # Node Message Commons
 - - -
 
-## Introduction
 A websocket library of pub/sub support for secure web socket messaging.
+
+## Introduction
+Node messaging commons leverages the [faye](http://faye.jcoglan.com/) pub/sub module to provide a library of secure web socket messaging for known domains and channels.
 
 ## API
 

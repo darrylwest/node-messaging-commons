@@ -6,7 +6,6 @@
  * @created: 2014-08-17
  */
 var dash = require('lodash'),
-    LogManager = require('simple-node-logger'),
     Config = require('./Config'),
     MessageSocketService = require('../services/MessageSocketService');
 
@@ -15,8 +14,12 @@ var ApplicationFactory = function(options) {
 
     var factory = this,
         log = options.log,
-        logManager = new LogManager(options),
+        logManager = options.logManager,
         messageSocketService = options.messageSocketService;
+
+    if (!log) {
+        log = logManager.createLogger('ApplicationFactory');
+    }
 
     this.createMessageSocketService = function() {
         if (!messageSocketService) {
@@ -56,11 +59,13 @@ var ApplicationFactory = function(options) {
 
 ApplicationFactory.createInstance = function() {
     'use strict';
-    // TODO read the env from argv
+    // TODO create bootstrap to configure logger and env
 
     var applicationFactory,
         env = 'development',
         config = Config[ env ]();
+
+    config.logManager = require('simple-node-logger').createLogger();
 
     applicationFactory = new ApplicationFactory( config );
     applicationFactory.initialize();

@@ -4,8 +4,7 @@
  * @author: darryl.west@raincitysoftware.com
  * @created: 2014-08-17
  */
-var VERSION = '00.90.05',
-    path = require('path');
+var VERSION = '00.90.05';
 
 var Config = function(options) {
     'use strict';
@@ -14,14 +13,10 @@ var Config = function(options) {
 
     this.version = VERSION;
 
+    // TODO read from external config.json
+
     this.environment = options.env;
-
-    this.logfile = path.join( process.env.HOME, 'logs', 'messaging-commons.log' );
-    this.consoleLogLevel = 'info';
-    this.fileLogLevel = 'info';
-
     this.messageHub = '/RainCityMessageHub';
-
     this.port = 29169;
 };
 
