@@ -10,6 +10,18 @@ Node messaging commons leverages the [faye](http://faye.jcoglan.com/) pub/sub mo
 
 ## API
 
+The stanard API provides methods to create a message hub as well as message producers and consumers.  The message hub is configurable through any javascript
+object, but typically from an external json file.
+
+A typical implementation looks like this:
+
+~~~
+	var config = require('./config.json'),
+    	MessageHub = require('node-messaging-commons');
+        
+    MessageHub.startService( config );
+~~~
+
 ## Producer / Publisher
 
 ## Consumer / Subscriber

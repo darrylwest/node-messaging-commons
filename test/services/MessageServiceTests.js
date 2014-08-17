@@ -7,8 +7,8 @@
 var should = require('chai').should(),
     dash = require('lodash'),
     MockLogger = require('simple-node-logger').mocks.MockLogger,
-    Config = require('../../app/controllers/Config'),
-    MessageSocketService = require('../../app/services/MessageSocketService');
+    Config = require('../../lib/controllers/Config'),
+    MessageSocketService = require('../../lib/services/MessageSocketService');
 
 describe('MessageSocketService', function() {
     'use strict';

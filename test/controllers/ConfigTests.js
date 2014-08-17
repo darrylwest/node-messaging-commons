@@ -4,13 +4,12 @@
  * @created: 2014-08-17
  */
 var should = require('chai').should(),
-    Config = require('../../app/controllers/Config');
+    Config = require('../../lib/controllers/Config');
 
 describe( 'Config', function() {
     'use strict';
 
     describe('#instance', function() {
-
 
         it('should create an instance of Config', function() {
             should.exist( Config );

@@ -17,8 +17,8 @@ module.exports = function(grunt) {
         watch:{
             scripts:{
                 files:[
-                    '<%= dirs.app %>/*.js',
-                    '<%= dirs.app %>/*/*.js',
+                    '<%= dirs.lib %>/*.js',
+                    '<%= dirs.lib %>/*/*.js',
                     '<%= dirs.test %>/*.js',
                     '<%= dirs.test %>/*/*.js'
                 ],
@@ -39,11 +39,12 @@ module.exports = function(grunt) {
             },
             all: [
                 'Gruntfile.js',
-                '<%= dirs.app %>/*.js',
-                '<%= dirs.app %>/*/*.js',
+                'index.js',
+                '<%= dirs.lib %>/*.js',
+                '<%= dirs.lib %>/*/*.js',
                 '<%= dirs.test %>/*.js',
                 '<%= dirs.test %>/*/*.js',
-                '!app/FeedbackConverter.js'
+                '!lib/FeedbackConverter.js'
             ]
         },
         mochaTest: {

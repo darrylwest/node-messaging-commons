@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 var host = 'localhost:29169',
-    casual = require('casual'),
     faye = require('faye'),
     url = 'http://' + host + '/RainCityMessageHub',
     client = new faye.Client( url ),

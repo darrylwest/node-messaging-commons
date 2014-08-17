@@ -6,8 +6,8 @@
 var should = require('chai').should(),
     dash = require('lodash'),
     MockLogger = require('simple-node-logger').mocks.MockLogger,
-    Config = require('../../app/controllers/Config'),
-    ApplicationFactory = require('../../app/controllers/ApplicationFactory');
+    Config = require('../../lib/controllers/Config'),
+    ApplicationFactory = require('../../lib/controllers/ApplicationFactory');
 
 describe('ApplicationFactory', function() {
     'use strict';
