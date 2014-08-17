@@ -24,6 +24,20 @@ A typical implementation looks like this:
 
 This small bit of code gets the message backbone hub started.  With a hub in place, you are ready to add new channels for message producers and consumers.
 
+## Configuration
+
+The config file specifies the machine port, the hub name and other parameters that control the message system.  A minimal configuration would look like this:
+
+~~~
+	{
+    	"port":23442,
+        "hubName":"MyMessageHub",
+        "channels":[ "user","order","logger" ]
+    }
+~~~
+
+This defines a message hub listening on port 23442 with a name of MyMessageHub and accepting pub/sub messages on user, order and logger channels.
+
 ## Producer / Publisher
 
 ## Consumer / Subscriber
