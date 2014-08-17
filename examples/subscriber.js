@@ -2,7 +2,7 @@
 
 var host = 'localhost:29169',
     faye = require('faye'),
-    url = 'http://' + host + '/RainCityMessageHub',
+    url = 'http://' + host + '/MessageHub',
     client = new faye.Client( url ),
     sub, 
     channel='/test-channel';
