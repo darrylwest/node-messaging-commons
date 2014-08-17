@@ -22,6 +22,8 @@ A typical implementation looks like this:
     MessageHub.startService( config );
 ~~~
 
+This small bit of code gets the message backbone hub started.  With a hub in place, you are ready to add new channels for message producers and consumers.
+
 ## Producer / Publisher
 
 ## Consumer / Subscriber

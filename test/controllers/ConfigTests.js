@@ -24,7 +24,8 @@ describe( 'Config', function() {
                 propertyList = [
                     'version',
                     'environment',
-                    'port'
+                    'port',
+                    'hubName'
                 ];
 
             propertyList.forEach(function(prop) {
