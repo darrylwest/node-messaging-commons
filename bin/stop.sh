@@ -1,5 +1,5 @@
 #!/bin/sh
-# dpw@alameda.local
+# darryl.west@raincitysoftware.com
 # 2014-08-17
 #
 

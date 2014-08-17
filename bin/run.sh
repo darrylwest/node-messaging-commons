@@ -1,5 +1,5 @@
 #!/bin/sh
-# dpw@nobhill.local
+# darryl.west@raincitysoftware.com
 # 2014-08-17
 #
 

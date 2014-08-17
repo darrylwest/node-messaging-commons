@@ -4,10 +4,8 @@ var host = 'localhost:29169',
     faye = require('faye'),
     url = 'http://' + host + '/RainCityMessageHub',
     client = new faye.Client( url ),
-    channel = '/logging',
-    sub;
-
-channel='/test-channel';
+    sub, 
+    channel='/test-channel';
 
 console.log( 'connect to ', url );
 

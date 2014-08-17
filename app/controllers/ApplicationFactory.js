@@ -61,11 +61,15 @@ ApplicationFactory.createInstance = function() {
     'use strict';
     // TODO create bootstrap to configure logger and env
 
-    var applicationFactory,
+    var SimpleLogger = require('simple-node-logger'),
+        manager = new SimpleLogger(),
+        applicationFactory,
         env = 'development',
         config = Config[ env ]();
 
-    config.logManager = require('simple-node-logger').createLogger();
+    manager.createConsoleAppender();
+
+    config.logManager = manager;
 
     applicationFactory = new ApplicationFactory( config );
     applicationFactory.initialize();
