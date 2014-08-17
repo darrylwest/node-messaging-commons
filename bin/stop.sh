@@ -3,6 +3,8 @@
 # 2014-08-17
 #
 
+// TODO - replace with background runner
+
 PID=`cat process.pid`
 
 echo "stopping process, PID = $PID..."

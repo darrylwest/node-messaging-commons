@@ -69,6 +69,11 @@ module.exports = function(grunt) {
         'jshint'
     ]);
 
+    grunt.registerTask('testAll', [
+        'mochaTest',
+        'validate-package'
+    ]);
+
     grunt.registerTask('default', [
         'jshint',
         'mochaTest'

@@ -3,7 +3,5 @@
 # 2014-08-17
 #
 
-cd app
-
-node app.js --env development
+node lib/app.js --env development
 
