@@ -10,6 +10,14 @@
   "scripts": {
     "test": "grunt testAll"
   },
+  "keywords":[
+    "message",
+    "messaging",
+    "websockets",
+    "sockets",
+    "pub/sub",
+    "producer/consumer"
+  ],
   "dependencies": {
     "commander": "^2.3.0",
     "faye": "^1.0.3",
