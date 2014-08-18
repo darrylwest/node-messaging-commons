@@ -40,7 +40,27 @@ This defines a message hub listening on port 23442 with a name of MyMessageHub a
 
 ## Producer / Publisher
 
+~~~
+	var config = require('./config.json),
+    	MessageHub = require('node-messaging-commons');
+        
+    var producer = MessageHub.createProducer( 'mywork-channel' );
+    producer.on('open', function() {
+    	producer.send( { "alert":"producer is now active..." });
+    });
+~~~
+
 ## Consumer / Subscriber
+
+~~~
+	var config = require('./config.json),
+    	MessageHub = require('node-messaging-commons');
+        
+    var consumer = MessageHub.createConsumer( 'mywork-channel' );
+    consumer.on('message', function(msg)) {
+    	// messages are wrapped in JSON with id, ts, and message object
+    });
+~~~
 
 ## Examples
 
