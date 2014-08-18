@@ -1,0 +1,5 @@
+{
+    "port":23442,
+    "hubName":"CustomHub",
+    "channels":[ "logger", "chat", "bugalert" ]
+}
