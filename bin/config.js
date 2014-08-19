@@ -14,7 +14,7 @@ var Config = function() {
 
     // other security configurations...
 
-    this.readLoggerConfig = function() {
+    this.xreadLoggerConfig = function() {
         var opts = {
             logDirectory: process.env.HOME + '/logs',
             fileNamePattern:[ 'messages-', config.port, '-<DATE>.log' ].join(''),

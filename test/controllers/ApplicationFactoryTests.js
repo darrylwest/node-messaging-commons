@@ -6,14 +6,13 @@
 var should = require('chai').should(),
     dash = require('lodash'),
     MockLogger = require('simple-node-logger').mocks.MockLogger,
-    Config = require('../../lib/controllers/Config'),
     ApplicationFactory = require('../../lib/controllers/ApplicationFactory');
 
 describe('ApplicationFactory', function() {
     'use strict';
 
     var createOptions = function() {
-        var opts = new Config.test();
+        var opts = {};
 
         opts.logManager = MockLogger;
 

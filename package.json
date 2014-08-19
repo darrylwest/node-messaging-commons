@@ -10,7 +10,7 @@
   "scripts": {
     "test": "grunt testAll"
   },
-  "keywords":[
+  "keywords": [
     "message",
     "messaging",
     "websockets",
@@ -19,6 +19,7 @@
     "producer/consumer"
   ],
   "dependencies": {
+    "background-service-runner": "^0.90.20",
     "commander": "^2.3.0",
     "faye": "^1.0.3",
     "lodash": "~2.4.1",

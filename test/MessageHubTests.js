@@ -7,7 +7,6 @@
 var should = require('chai').should(),
     dash = require('lodash'),
     MockLogger = require('simple-node-logger').mocks.MockLogger,
-    Config = require('../lib/controllers/Config'),
     MessageHub = require('../lib/MessageHub');
 
 describe('MessageHub', function() {
@@ -20,7 +19,7 @@ describe('MessageHub', function() {
         opts.port = 23442;
         opts.hubName = 'CustomHub';
 
-            // "channels":[ "logger", "chat", "bug-alert" ]
+        // "channels":[ "logger", "chat", "bug-alert" ]
 
         return opts;
     };

@@ -7,14 +7,18 @@
 var should = require('chai').should(),
     dash = require('lodash'),
     MockLogger = require('simple-node-logger').mocks.MockLogger,
-    Config = require('../../lib/controllers/Config'),
     MessageSocketService = require('../../lib/services/MessageSocketService');
 
 describe('MessageSocketService', function() {
     'use strict';
 
     var createOptions = function() {
-        var opts = new Config.test();
+        var opts = {};
+
+        opts.version = '00.90.99';
+        opts.port = 29169;
+        opts.hubName = 'ExampleMessageHub';
+        opts.channels = [ 'user', 'bugs', 'blog', 'chat' ];
 
         opts.log = MockLogger.createLogger('MessageSocketService');
 
