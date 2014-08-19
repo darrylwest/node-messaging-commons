@@ -18,8 +18,7 @@ Node messaging commons leverages the [faye](http://faye.jcoglan.com/) pub/sub mo
 
 The messaging API provides methods to create a message service hub to run on a specified port with a designated name.  The api also provides methods to create server-side message producers and consumers.  There are also support libraries that can be used to create message producers and consumers in the browser.
 
-The message hub is configurable through any javascript
-object, but typically from an external json file.
+The message hub is configurable through any javascriptobject, but may come from an external json file.
 
 A typical implementation looks like this:
 
@@ -115,6 +114,36 @@ Then creating the hub would be done with:
 ~~~
 
 See the *examples* folder for a fully implemented example.
+
+## Message Hub Status
+
+The local machine may access the message hub server to query for status through an HTTP request.  The request looks like this:
+
+~~~
+	curl http://localhost:<port>/
+~~~
+
+And a response (without any subscribers) looks something like this:
+
+~~~
+	{
+  		"version": "00.90.05",
+  		"hubName": "/ExampleMessageHub",
+  		"subscribers": {}
+	}
+~~~
+
+This can only be executed on the serving machine.
+
+## Shutdown
+
+The http service also supports a shutdown command using a post:
+
+~~~
+	curl -X POST http://localhost:<port>/shutdown
+~~~
+
+This can only be executed on the serving machine.
 
 ## Examples
 
