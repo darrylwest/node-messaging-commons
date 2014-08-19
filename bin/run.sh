@@ -1,7 +1,13 @@
-#!/bin/sh
-# darryl.west@raincitysoftware.com
-# 2014-08-17
-#
+#!/usr/bin/env node
 
-node lib/app.js --env development
+var config = require( __dirname + '/config' ).readMessageHubConfig(),
+    MessageHub = require('../lib/MessageHub'),
+    hub;
+    
+config.daemon = false;
+config.env = 'development';
+
+hub = MessageHub.createInstance( config );
+
+hub.start();
 
