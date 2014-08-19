@@ -17,11 +17,10 @@ describe('MessageHub', function() {
         var opts = {};
 
         opts.log = MockLogger.createLogger('MessageHub');
-        opts.config = {
-            "port":23442,
-            "hubName":"CustomHub",
-            "channels":[ "logger", "chat", "bug-alert" ]
-        };
+        opts.port = 23442;
+        opts.hubName = 'CustomHub';
+
+            // "channels":[ "logger", "chat", "bug-alert" ]
 
         return opts;
     };
@@ -30,7 +29,9 @@ describe('MessageHub', function() {
         var hub = new MessageHub( createOptions()),
             methods = [
                 'start',
-                'shutdown'
+                'shutdown',
+                'getPort',
+                'getHubName'
             ];
 
         it('should create an instance of MessageHub', function() {
@@ -44,6 +45,22 @@ describe('MessageHub', function() {
             methods.forEach(function(method) {
                 hub[ method ].should.be.a('function');
             });
+        });
+    });
+
+    describe('createInstance', function() {
+        it('should create an instance of message hub with a simple logger', function() {
+            var opts = {
+                    port:4321,
+                    hubName:'testHub'
+                },
+                hub = MessageHub.createInstance( opts );
+
+            should.exist( hub );
+            hub.should.be.instanceof( MessageHub );
+
+            hub.getPort().should.equal( opts.port );
+            hub.getHubName().should.equal( opts.hubName );
         });
     });
 });
