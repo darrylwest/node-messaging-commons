@@ -26,7 +26,7 @@ A typical implementation looks like this:
 ~~~
 	var MessageHub = require('node-messaging-commons');
         
-    var hub = MessageHub.createInstance({ port:9099, hubName:'MyMessageHub' });
+    var hub = MessageHub.createInstance({ port:9099, hubName:'/MyMessageHub' });
     hub.start();
 ~~~
 
@@ -41,7 +41,7 @@ Message publishers (producers) may run on the server-side to broadcast messages 
 Assuming the service hub already exists, creating a server-side publisher would look like this:
 
 ~~~
-	var hub = MessageHub.createInstance({ port:9099, hubName:'MyMessageHub' });
+	var hub = MessageHub.createInstance({ port:9099, hubName:'/MyMessageHub' });
         
     var producer = hub.createProducer( 'mywork-channel' );
     producer.on('open', function() {
@@ -62,7 +62,7 @@ Similar to publishers, message subscribers may run either on the server or in th
 ### Server-Side Message Subscriber
 
 ~~~
-	var hub = MessageHub.createInstance({ port:9099, hubName:'MyMessageHub' });
+	var hub = MessageHub.createInstance({ port:9099, hubName:'/MyMessageHub' });
         
     var consumer = hub.createConsumer( 'mywork-channel' );
     consumer.on('message', function(msg)) {
@@ -83,7 +83,7 @@ A configuration object specifies the machine port, the hub name and other parame
 ~~~
 	{
     	"port":23442,
-        "hubName":"MyMessageHub"
+        "hubName":"/MyMessageHub"
     }
 ~~~
 
@@ -96,8 +96,8 @@ A more robust solution would specify a logger and other parameters like a list o
     	var config = this;
         
         this.port = 23442;
-        this.hubName = 'MyMessageHub';
-        this.channels = [ 'user', 'order', 'logger' ]
+        this.hubName = '/MyMessageHub';
+        this.channels = [ '/user', '/order', '/logger' ]
         this.daemon = true;
         
         this.readLoggerConfig = function() {
@@ -116,10 +116,20 @@ Then creating the hub would be done with:
 
 See the *examples* folder for a fully implemented example.
 
+## Examples
 
+- simple.js : creates a minimal hub, message producer and subscriber
+- publisher.js : creates a message producer to send messages to /test-channel
+- subscriber.js : recieves messages from a publisher on /test-channel
+- config.js : an example of a typical configuration
+
+## The bin folder
+
+These scripts are typical start/stop/config and status scripts used as templates for production installations.
 
 ## Tests
 
+### Unit Tests
 Unit tests include should/specs, jshint and validate-package.  Tests can be run from the command line with this:
 
 ~~~
@@ -134,6 +144,9 @@ Unit tests include should/specs, jshint and validate-package.  Tests can be run 
     grunt mochaTest jshint validate-package
 ~~~
 
+### Integration Tests
+
+*non-automated tests*
 
 - - -
 <p><small><em>Copyright © 2014, rain city software | Version 0.90.05</em></small></p>
