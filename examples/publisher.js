@@ -2,7 +2,7 @@
 
 var host = 'localhost:29169',
     faye = require('faye'),
-    url = 'http://' + host + '/MessageHub',
+    url = 'http://' + host + '/ExampleMessageHub',
     client = new faye.Client( url ),
     delay = 1000, // tested down to 10 ms running local publisher and remote clients 
     channel='/test-channel';

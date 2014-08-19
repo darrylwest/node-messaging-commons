@@ -16,7 +16,9 @@ Node messaging commons leverages the [faye](http://faye.jcoglan.com/) pub/sub mo
 
 ## API
 
-The stanard API provides methods to create a message hub as well as message producers and consumers.  The message hub is configurable through any javascript
+The messaging API provides methods to create a message service hub to run on a specified port with a designated name.  The api also provides methods to create server-side message producers and consumers.  There are also support libraries that can be used to create message producers and consumers in the browser.
+
+The message hub is configurable through any javascript
 object, but typically from an external json file.
 
 A typical implementation looks like this:
@@ -28,11 +30,15 @@ A typical implementation looks like this:
     hub.start();
 ~~~
 
-This small bit of code gets the message backbone hub started.  With a hub in place, you are ready to add new channels for message producers and consumers.
+This small bit of code gets the message backbone hub started.  With a hub in place, you are ready to add producer and consumer channels and exchange messages.
 
 ## Producer / Publisher
 
-Publishers may reside on the server or inside the browser.  Creating a publisher on the server looks like this:
+Message publishers (producers) may run on the server-side to broadcast messages to listening subscribers (consumers).  Publishers many also run inside the browser.   
+
+### Server-side Message Producer
+
+Assuming the service hub already exists, creating a server-side publisher would look like this:
 
 ~~~
 	var hub = MessageHub.createInstance({ port:9099, hubName:'MyMessageHub' });
@@ -43,9 +49,18 @@ Publishers may reside on the server or inside the browser.  Creating a publisher
     });
 ~~~
 
+### Message Producer in the Browser
+
+- websockets port 80
+- create the channel, wait for acknowledgement from hub
+- send messages to subscribers (if any)
+
 ## Consumer / Subscriber
 
-Subscribers may reside on the server or in the browser
+Similar to publishers, message subscribers may run either on the server or in the browser.  
+
+### Server-Side Message Subscriber
+
 ~~~
 	var hub = MessageHub.createInstance({ port:9099, hubName:'MyMessageHub' });
         
@@ -54,6 +69,12 @@ Subscribers may reside on the server or in the browser
     	// messages are wrapped in JSON with id, ts, and message object
     });
 ~~~
+
+### Message Subscriber in the Browser
+
+- websockets port 80
+- subscribe to a known channel
+- handle incoming messages
 
 ## Configuration
 
@@ -77,6 +98,7 @@ A more robust solution would specify a logger and other parameters like a list o
         this.port = 23442;
         this.hubName = 'MyMessageHub';
         this.channels = [ 'user', 'order', 'logger' ]
+        this.daemon = true;
         
         this.readLoggerConfig = function() {
         	// create the logger config

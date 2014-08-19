@@ -9,11 +9,12 @@ var Config = function() {
     var config = this;
 
     this.port = 29169;
-    this.hubName = 'ExampleMessageHub';
+    this.hubName = '/ExampleMessageHub';
     this.channels = [ 'user', 'bugs', 'blog', 'chat' ];
 
     // other security configurations...
 
+    // disable this for now...
     this.xreadLoggerConfig = function() {
         var opts = {
             logDirectory: process.env.HOME + '/logs',

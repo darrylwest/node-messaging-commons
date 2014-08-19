@@ -2,7 +2,7 @@
 
 var host = 'localhost:29169',
     faye = require('faye'),
-    url = 'http://' + host + '/MessageHub',
+    url = 'http://' + host + '/ExampleMessageHub',
     client = new faye.Client( url ),
     sub, 
     channel='/test-channel';
@@ -10,7 +10,7 @@ var host = 'localhost:29169',
 console.log( 'connect to ', url );
 
 sub = client.subscribe(channel, function(message) {
-    console.log('message received: ', message);
+    console.log('message received from: ', channel, ': ', message);
 });
 
 sub.then(function() {
