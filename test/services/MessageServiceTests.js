@@ -19,6 +19,7 @@ describe('MessageService', function() {
         opts.log = MockLogger.createLogger('MessageService');
         opts.client = new MockMessageClient();
         opts.channel = '/test-channel';
+        opts.uid = 'my-unique-id';
 
         return opts;
     };
@@ -27,7 +28,8 @@ describe('MessageService', function() {
         var service = new MessageService( createOptions() ),
             methods = [
                 'addSubscriber',
-                'publish'
+                'publish',
+                'wrapMessage'
             ];
 
         it('should create an instance of MessageService', function() {
@@ -40,6 +42,22 @@ describe('MessageService', function() {
             methods.forEach(function(method) {
                 service[ method ].should.be.a('function');
             });
+        });
+    });
+
+    describe('wrapMessage', function() {
+        var opts = createOptions(),
+            service = new MessageService( opts );
+
+        it('should wrap a message object with a standard wrapper', function() {
+            var model = 'this is a test message',
+                obj = service.wrapMessage( model );
+
+            should.exist( obj );
+            obj.uid.should.equal( opts.uid );
+            obj.ts.should.be.above( Date.now() - 20000 );
+            obj.version.should.equal( '1.0' );
+            obj.message.should.equal( model );
         });
     });
 });
