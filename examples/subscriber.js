@@ -1,19 +1,13 @@
 #!/usr/bin/env node
 
-var host = 'localhost:29169',
-    faye = require('faye'),
-    url = 'http://' + host + '/ExampleMessageHub',
-    client = new faye.Client( url ),
-    sub, 
-    channel='/heartbeat';
+var config = require( __dirname + '/../config.json' ),
+    channel = config.channels[ 0 ],
+    MessageHub = require( __dirname + '/../index' ),
+    hub = MessageHub.createInstance( config ),
+    consumer = hub.createConsumer( channel ); 
 
-console.log( 'connect to ', url );
 
-sub = client.subscribe(channel, function(message) {
-    console.log('message received from: ', channel, ': ', message);
-});
-
-sub.then(function() {
-    console.log('subscription to ', channel, ' accepted.');
+consumer.addSubscriber(function(message) {
+    console.log( message );
 });
 

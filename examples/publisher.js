@@ -1,26 +1,21 @@
 #!/usr/bin/env node
 
-var host = 'localhost:29169',
-    faye = require('faye'),
-    url = 'http://' + host + '/ExampleMessageHub',
-    client = new faye.Client( url ),
-    delay = 1000, // tested down to 10 ms running local publisher and remote clients 
-    channel='/test-channel';
-
-console.log( 'connect to ', url );
+var config = require( __dirname + '/../config.json' ),
+    channel = config.channels[ 0 ],
+    MessageHub = require( __dirname + '/../index' ),
+    hub = MessageHub.createInstance( config ),
+    publisher = hub.createProducer( channel ); 
 
 setInterval(function() {
-    var msg = {
-        ts:Date.now(),
-        version: '1.0',
-        message:{
-            
-        }
+    var obj = {
+        publisherMessage:'hi',
+        created:new Date().toJSON(),
+        count:publisher.getMessageCount()
     };
 
-    console.log('publish: ', msg, ' to ', channel);
+    console.log('publish: ', obj, ' to ', channel);
 
-    client.publish( channel, msg );
-}, delay);
+    publisher.publish( obj );
+}, 1000);
 
 

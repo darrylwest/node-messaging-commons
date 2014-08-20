@@ -1,5 +1,6 @@
 {
-    "port":23442,
-    "hubName":"CustomHub",
-    "channels":[ "logger", "chat", "bugalert" ]
+    "port":29169,
+    "hubName":"/ExampleMessageHub",
+    "channels":[ "/heartbeat", "/logger", "/chat", "/bugs", "/blog" ]
 }
+
