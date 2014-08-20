@@ -1,9 +1,10 @@
 # Node Messaging Commons
 - - -
 
-- create MessageService
-- refactor MessageHub.createProducer( channel ), MessageHub.createConsumer( channel ) to instance variables;
+- create status script
+- create stop script
 - implement use background service with daemon flag
+- create demo
 
 - - -
-<p><small><em>last updated Aug 19, 2014</em></small></p>
+<p><small><em>last updated Aug 20, 2014</em></small></p>

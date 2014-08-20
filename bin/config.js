@@ -1,8 +1,7 @@
 /**
  * @author: darryl.west@raincitysoftware.com
- * @created: 8/19/14
+ * @created: 2014-08-20
  */
-
 
 module.exports.readMessageHubConfig = function() {
     'use strict';
@@ -10,12 +9,14 @@ module.exports.readMessageHubConfig = function() {
 
     config.port = 29169;
     config.hubName = '/ExampleMessageHub';
-    config.channels = [ 'user', 'bugs', 'blog', 'chat' ];
+    config.channels = [ 'heartbeat', 'user', 'bugs', 'blog', 'chat' ];
+
+    config.daemon = true;
 
     // other security configurations...
 
     // disable this for now...
-    config.xreadLoggerConfig = function() {
+    config.readLoggerConfig = function() {
         var opts = {
             logDirectory: process.env.HOME + '/logs',
             fileNamePattern:[ 'messages-', config.port, '-<DATE>.log' ].join(''),
