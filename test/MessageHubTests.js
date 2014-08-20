@@ -7,7 +7,8 @@
 var should = require('chai').should(),
     dash = require('lodash'),
     MockLogger = require('simple-node-logger').mocks.MockLogger,
-    MessageHub = require('../lib/MessageHub');
+    MessageHub = require('../lib/MessageHub'),
+    ApplicationFactory = require('../lib/controllers/ApplicationFactory');
 
 describe('MessageHub', function() {
     'use strict';
@@ -21,14 +22,19 @@ describe('MessageHub', function() {
 
         // "channels":[ "logger", "chat", "bug-alert" ]
 
+        opts.serviceFactory = new ApplicationFactory( opts );
+
         return opts;
     };
 
     describe('#instance', function() {
-        var hub = new MessageHub( createOptions()),
+        var opts = createOptions(),
+            hub = new MessageHub( opts ),
             methods = [
                 'start',
                 'shutdown',
+                'createProducer',
+                'createConsumer',
                 'getPort',
                 'getHubName'
             ];
@@ -36,6 +42,9 @@ describe('MessageHub', function() {
         it('should create an instance of MessageHub', function() {
             should.exist( hub );
             hub.should.be.instanceof( MessageHub );
+
+            hub.getPort().should.equal( opts.port );
+            hub.getHubName().should.equal( opts.hubName );
         });
 
         it('should have all known methods by size', function() {
@@ -60,6 +69,26 @@ describe('MessageHub', function() {
 
             hub.getPort().should.equal( opts.port );
             hub.getHubName().should.equal( opts.hubName );
+        });
+    });
+
+    describe('createProducer', function() {
+        var hub = new MessageHub( createOptions() );
+
+        it('should create a message producer for a given channel', function() {
+            var producer = hub.createProducer( 'mychannel' );
+
+            should.exist( producer );
+        });
+    });
+
+    describe('createConsumer', function() {
+        var hub = new MessageHub( createOptions() );
+
+        it('should create a message consumer for a channel', function() {
+            var consumer = hub.createConsumer( 'mychannel' );
+
+            should.exist( consumer );
         });
     });
 });

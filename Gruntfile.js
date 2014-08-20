@@ -11,7 +11,7 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
         dirs: {
-            app:'app',
+            lib:'lib',
             test: 'test'
         },
         watch:{
