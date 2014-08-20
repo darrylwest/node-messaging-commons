@@ -3,19 +3,19 @@
  * @created: 8/19/14
  */
 
-var Config = function() {
+module.exports.readMessageHubConfig = function() {
     'use strict';
 
-    var config = this;
+    var config = {};
 
-    this.port = 29169;
-    this.hubName = '/ExampleMessageHub';
-    this.channels = [ 'user', 'bugs', 'blog', 'chat' ];
+    config.port = 29169;
+    config.hubName = '/ExampleMessageHub';
+    config.channels = [ 'user', 'bugs', 'blog', 'chat' ];
 
     // other security configurations...
 
     // create a rolling file logger...
-    this.readLoggerConfig = function() {
+    config.readLoggerConfig = function() {
         var opts = {
             logDirectory: './',
             fileNamePattern:[ 'messages-', config.port, '-<DATE>.log' ].join(''),
@@ -25,10 +25,6 @@ var Config = function() {
 
         return opts;
     };
-};
-
-module.exports.readMessageHubConfig = function() {
-    var config = new Config();
 
     return config;
 };

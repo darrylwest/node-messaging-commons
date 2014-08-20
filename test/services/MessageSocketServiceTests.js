@@ -1,8 +1,8 @@
 /**
- * @class MessageServiceTests
+ * @class MessageSocketServiceTests
  *
- * @author: darryl.west@roundpeg.com
- * @created: 2014-05-29
+ * @author: darryl.west@raincitysoftware.com
+ * @created: 2014-08-17
  */
 var should = require('chai').should(),
     dash = require('lodash'),

@@ -104,7 +104,11 @@ A more robust solution would specify a logger and other parameters like a list o
         };
     };
     
-    module.exports = Config;
+    module.exports.readMessageHubConfig = function() {
+    	var config = new Config();
+
+    	return config;
+	};
 ~~~
 
 Then creating the hub would be done with:
@@ -154,7 +158,7 @@ This can only be executed on the serving machine.
 
 ## The bin folder
 
-These scripts are typical start/stop/config and status scripts used as templates for production installations.
+These scripts are typical start/stop/status and config scripts used as templates for production installations.
 
 ## Tests
 

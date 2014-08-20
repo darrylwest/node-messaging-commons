@@ -3,19 +3,19 @@
  * @created: 8/19/14
  */
 
-var Config = function() {
+
+module.exports.readMessageHubConfig = function() {
     'use strict';
+    var config = {};
 
-    var config = this;
-
-    this.port = 29169;
-    this.hubName = '/ExampleMessageHub';
-    this.channels = [ 'user', 'bugs', 'blog', 'chat' ];
+    config.port = 29169;
+    config.hubName = '/ExampleMessageHub';
+    config.channels = [ 'user', 'bugs', 'blog', 'chat' ];
 
     // other security configurations...
 
     // disable this for now...
-    this.xreadLoggerConfig = function() {
+    config.xreadLoggerConfig = function() {
         var opts = {
             logDirectory: process.env.HOME + '/logs',
             fileNamePattern:[ 'messages-', config.port, '-<DATE>.log' ].join(''),
@@ -27,10 +27,6 @@ var Config = function() {
 
         return opts;
     };
-};
-
-module.exports.readMessageHubConfig = function() {
-    var config = new Config();
 
     return config;
 };

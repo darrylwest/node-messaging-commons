@@ -23,6 +23,7 @@ describe('ApplicationFactory', function() {
         var factory = new ApplicationFactory( createOptions()),
             methods = [
                 'createMessageSocketService',
+                'createMessageService',
                 'createLogger',
                 'initialize'
             ];
