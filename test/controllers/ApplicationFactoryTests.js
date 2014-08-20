@@ -1,4 +1,5 @@
 /**
+ * @class ApplicationFactory
  *
  * @author: darryl.west@raincitysoftware.com
  * @created: 2014-08-17
@@ -6,6 +7,8 @@
 var should = require('chai').should(),
     dash = require('lodash'),
     MockLogger = require('simple-node-logger').mocks.MockLogger,
+    MessageService = require('../../lib/services/MessageService'),
+    MessageSocketService = require('../../lib/services/MessageSocketService'),
     ApplicationFactory = require('../../lib/controllers/ApplicationFactory');
 
 describe('ApplicationFactory', function() {
@@ -15,6 +18,8 @@ describe('ApplicationFactory', function() {
         var opts = {};
 
         opts.logManager = MockLogger;
+        opts.port = 23442;
+        opts.hubName = '/CustomHub';
 
         return opts;
     };
@@ -25,6 +30,7 @@ describe('ApplicationFactory', function() {
                 'createMessageSocketService',
                 'createMessageService',
                 'createLogger',
+                'createMessageClient',
                 'initialize'
             ];
 
@@ -44,12 +50,26 @@ describe('ApplicationFactory', function() {
 
     describe('createMessageSocketService', function() {
         var factory = new ApplicationFactory( createOptions() );
-        it('should create an instance of message socket service');
+
+        it('should create an instance of message socket service', function() {
+            var service = factory.createMessageSocketService();
+
+            should.exist( service );
+            service.should.be.instanceof( MessageSocketService );
+        });
     });
 
     describe('createMessageService', function() {
-        var factory = new ApplicationFactory( createOptions() );
-        it('should create an instance of message service');
+
+        it('should create an instance of message service', function() {
+            var opts = createOptions(),
+                factory = new ApplicationFactory( opts),
+                channel = '/flarb',
+                service = factory.createMessageService( channel );
+
+            should.exist( service );
+            service.should.be.instanceof( MessageService );
+        });
     });
 });
 

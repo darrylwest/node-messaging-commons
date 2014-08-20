@@ -24,7 +24,7 @@ A typical implementation looks like this:
 
 ~~~
 	var MessageHub = require('node-messaging-commons');
-        
+
     var hub = MessageHub.createInstance({ port:9099, hubName:'/MyMessageHub' });
     hub.start();
 ~~~
@@ -33,7 +33,7 @@ This small bit of code gets the message backbone hub started.  With a hub in pla
 
 ## Producer / Publisher
 
-Message publishers (producers) may run on the server-side to broadcast messages to listening subscribers (consumers).  Publishers many also run inside the browser.   
+Message publishers (producers) may run on the server-side to broadcast messages to listening subscribers (consumers).  Publishers many also run inside the browser.
 
 ### Server-side Message Producer
 
@@ -56,13 +56,13 @@ Assuming the service hub already exists, creating a server-side publisher would 
 
 ## Consumer / Subscriber
 
-Similar to publishers, message subscribers may run either on the server or in the browser.  
+Similar to publishers, message subscribers may run either on the server or in the browser.
 
 ### Server-Side Message Subscriber
 
 ~~~
 	var hub = MessageHub.createInstance({ port:9099, hubName:'/MyMessageHub' });
-        
+
     var consumer = hub.createConsumer( 'mywork-channel' );
     consumer.on('message', function(msg)) {
     	// messages are wrapped in JSON with id, ts, and message object
@@ -93,17 +93,17 @@ A more robust solution would specify a logger and other parameters like a list o
 ~~~
 	var Config = function() {
     	var config = this;
-        
+
         this.port = 23442;
         this.hubName = '/MyMessageHub';
         this.channels = [ '/user', '/order', '/logger' ]
         this.daemon = true;
-        
+
         this.readLoggerConfig = function() {
         	// create the logger config
         };
     };
-    
+
     module.exports.readMessageHubConfig = function() {
     	var config = new Config();
 
@@ -167,13 +167,13 @@ Unit tests include should/specs, jshint and validate-package.  Tests can be run 
 
 ~~~
 	make test
-    
+
     // or
-    
+
     make watch
-    
-    // or 
-    
+
+    // or
+
     grunt mochaTest jshint validate-package
 ~~~
 
