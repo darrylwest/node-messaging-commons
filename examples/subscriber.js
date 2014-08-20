@@ -5,7 +5,7 @@ var host = 'localhost:29169',
     url = 'http://' + host + '/ExampleMessageHub',
     client = new faye.Client( url ),
     sub, 
-    channel='/test-channel';
+    channel='/heartbeat';
 
 console.log( 'connect to ', url );
 

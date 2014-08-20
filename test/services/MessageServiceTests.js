@@ -29,7 +29,8 @@ describe('MessageService', function() {
             methods = [
                 'addSubscriber',
                 'publish',
-                'wrapMessage'
+                'wrapMessage',
+                'getMessageCount'
             ];
 
         it('should create an instance of MessageService', function() {
