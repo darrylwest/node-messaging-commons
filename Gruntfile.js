@@ -17,6 +17,7 @@ module.exports = function(grunt) {
         watch:{
             scripts:{
                 files:[
+                    'index.js',
                     '<%= dirs.lib %>/*.js',
                     '<%= dirs.lib %>/*/*.js',
                     '<%= dirs.test %>/*.js',
