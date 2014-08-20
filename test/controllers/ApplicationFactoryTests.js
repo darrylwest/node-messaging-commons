@@ -41,5 +41,15 @@ describe('ApplicationFactory', function() {
             });
         });
     });
+
+    describe('createMessageSocketService', function() {
+        var factory = new ApplicationFactory( createOptions() );
+        it('should create an instance of message socket service');
+    });
+
+    describe('createMessageService', function() {
+        var factory = new ApplicationFactory( createOptions() );
+        it('should create an instance of message service');
+    });
 });
 
