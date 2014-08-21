@@ -19,7 +19,7 @@ describe('MessageService', function() {
         opts.log = MockLogger.createLogger('MessageService');
         opts.client = new MockMessageClient();
         opts.channel = '/test-channel';
-        opts.uid = 'my-unique-id';
+        opts.mid = 'my-unique-id';
 
         return opts;
     };
@@ -55,7 +55,7 @@ describe('MessageService', function() {
                 obj = service.wrapMessage( model );
 
             should.exist( obj );
-            obj.uid.should.equal( opts.uid );
+            obj.mid.should.equal( opts.mid );
             obj.ts.should.be.above( Date.now() - 20000 );
             obj.version.should.equal( '1.0' );
             obj.message.should.equal( model );

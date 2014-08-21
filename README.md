@@ -42,10 +42,24 @@ Assuming the service hub already exists, creating a server-side publisher would 
 ~~~
 	var hub = MessageHub.createInstance({ port:9099, hubName:'/MyMessageHub' });
         
-    var producer = hub.createProducer( 'mywork-channel' );
-    producer.on('open', function() {
-    	producer.send( { "alert":"producer is now active..." });
-    });
+    var producer = hub.createProducer( '/mywork-channel' ),
+    	message = { "alert":"producer is now active..." };
+        
+    producer.publish( message );
+    // producer messages are wrapped in JSON with id, ts, hmac and message object
+    // override producer.wrapMessage method to create a custom wrapper
+~~~
+
+Producer messages are wrapped in JSON with a timestamp, version and the message object.  The wrapper may be customized by overriding producer.wrapMessage.  Current message subscriber/consumers connected to the /MyMessageHub and listening on channel '/mywork-channel' would receive an initial message that looks like this:
+
+~~~
+	{
+    	ts: 1408628582074,
+        version: "1.0",
+        message:{
+        	"alert":"producer is now active..."
+        }
+    }
 ~~~
 
 ### Message Producer in the Browser
@@ -64,8 +78,8 @@ Similar to publishers, message subscribers may run either on the server or in th
 	var hub = MessageHub.createInstance({ port:9099, hubName:'/MyMessageHub' });
 
     var consumer = hub.createConsumer( 'mywork-channel' );
-    consumer.on('message', function(msg)) {
-    	// messages are wrapped in JSON with id, ts, and message object
+    consumer.onMessage, function(msg)) {
+    	// producer messages are wrapped in JSON with id, ts, hmac, and message object
     });
 ~~~
 
@@ -74,6 +88,34 @@ Similar to publishers, message subscribers may run either on the server or in th
 - websockets port 80
 - subscribe to a known channel
 - handle incoming messages
+## Security
+
+The standard wrapper calculates and includes a message digest when the message provider is created with a digest algorithm and the send method includes a session key.  The session key needs to be common to the producer and consumer through a back channel to enable messages to be verified when received.  Here is a typical configuration and use:
+
+~~~
+	var config = {
+    	port:9099,
+        hubName:'/SessionHub',
+        algorithm:'sha256'
+    };
+
+    var hub = MessageHub.createInstance( config ),
+    	provider = hub.createProvider( '/gameboy' ),
+        session = '<my-session-key>';
+
+    provider.publish( 'this is a message', session );
+~~~
+
+The wrapped message for this configuration looks similar to this:
+
+~~~
+	{
+    	ts: 1408628111390,
+  		version: '1.0',
+  		message: 'this is a test message',
+  		hmac: 'b87c0e7777907d438f3c0b3c00c2a8263ce995684193427933d160b94b751831' 
+    }
+~~~
 
 ## Configuration
 
@@ -148,6 +190,7 @@ The http service also supports a shutdown command using a post:
 ~~~
 
 This can only be executed on the serving machine.
+
 
 ## Examples
 

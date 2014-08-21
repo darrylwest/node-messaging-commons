@@ -6,7 +6,7 @@ var config = require( __dirname + '/../config.json' ),
     hub = MessageHub.createInstance( config ),
     consumer = hub.createConsumer( channel );
 
-consumer.addSubscriber(function(message) {
+consumer.onMessage(function(message) {
     console.log( message );
 });
 
