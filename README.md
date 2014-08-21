@@ -66,6 +66,8 @@ Producer messages are wrapped in JSON with a timestamp, version and the message 
 - create the channel, wait for acknowledgement from hub
 - send messages to consumers (if any)
 
+_\* demo available soon..._
+
 ## Consumer / Subscriber
 
 Similar to publishers, message consumers may run either on the server or in the browser.  On the server, they listen through the hub's local port.  In the browser they are routed through port 80 (or 443 for ssl).
@@ -87,6 +89,7 @@ Similar to publishers, message consumers may run either on the server or in the 
 - subscribe to a known channel
 - handle incoming messages
 
+_\* demo available soon..._
 
 ## Security
 
@@ -203,6 +206,12 @@ This can only be executed on the serving machine.
 
 These scripts are typical start/stop/status and config scripts used as templates for production installations.
 
+- bin/start.js
+- bin/status.js
+- bin/stop.js
+- bin/run.js
+
+
 ## Tests
 
 ### Unit Tests
@@ -222,4 +231,4 @@ Unit tests include should/specs, jshint and validate-package.  Tests can be run 
 
 
 - - -
-<p><small><em>Copyright © 2014, rain city software | Version 0.90.11</em></small></p>
+<p><small><em>Copyright © 2014, rain city software | Version 0.90.12</em></small></p>
