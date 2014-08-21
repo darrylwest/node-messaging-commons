@@ -8,15 +8,16 @@ var config = require( __dirname + '/../config.json' ),
     publisher = hub.createProducer( channel, id );
 
 setInterval(function() {
-    var obj = {
+    var model = {
         publisherMessage:'hi',
         created:new Date().toJSON(),
         count:publisher.getMessageCount()
     };
 
-    console.log('publish: ', obj, ' to ', channel);
+    console.log('publish: ', model, ' to ', channel);
 
-    publisher.publish( obj );
+    // send the message model and use the app key as session for hmac
+    publisher.publish( model, config.appkey );
 }, 1000);
 
 

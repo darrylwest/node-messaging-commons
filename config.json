@@ -1,6 +1,8 @@
 {
     "port":29169,
     "hubName":"/ExampleMessageHub",
-    "channels":[ "/heartbeat", "/logger", "/chat", "/bugs", "/blog" ]
+    "channels":[ "/heartbeat", "/logger", "/chat", "/bugs", "/blog" ],
+    "algorithm":"sha256",
+    "appkey":"d6527612-55e9-4e10-8d4c-2979a979928a"
 }
 
