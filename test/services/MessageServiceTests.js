@@ -27,10 +27,11 @@ describe('MessageService', function() {
     describe('#instance', function() {
         var service = new MessageService( createOptions() ),
             methods = [
-                'addSubscriber',
+                'onMessage',
                 'publish',
                 'wrapMessage',
-                'getMessageCount'
+                'getMessageCount',
+                'calculateDigest'
             ];
 
         it('should create an instance of MessageService', function() {
@@ -47,11 +48,10 @@ describe('MessageService', function() {
     });
 
     describe('wrapMessage', function() {
-        var opts = createOptions(),
-            service = new MessageService( opts );
-
         it('should wrap a message object with a standard wrapper', function() {
-            var model = 'this is a test message',
+            var opts = createOptions(),
+                service = new MessageService( opts ),
+                model = 'this is a test message',
                 obj = service.wrapMessage( model );
 
             should.exist( obj );
@@ -59,6 +59,22 @@ describe('MessageService', function() {
             obj.ts.should.be.above( Date.now() - 20000 );
             obj.version.should.equal( '1.0' );
             obj.message.should.equal( model );
+        });
+
+        it('should wrap a message and calculate the message digest', function() {
+            var opts = createOptions(),
+                session = '1234567890',
+                service,
+                model = { alert:'this is a complex message', warning:'danger' },
+                obj;
+
+            opts.algorithm = 'sha256';
+            service = new MessageService( opts );
+            obj = service.wrapMessage( model, session );
+
+            should.exist( obj );
+            should.exist( obj.hmac );
+            obj.hmac.should.equal( '062786dcf7d992ed36388316790d13fbae86565ddd9348269b6f02f7bee9d18a' );
         });
     });
 });
