@@ -33,7 +33,7 @@ This small bit of code gets the message backbone hub started.  With a hub in pla
 
 ## Producer / Publisher
 
-Message publishers (producers) may run on the server-side to broadcast messages to listening subscribers (consumers).  Publishers many also run inside the browser.
+Message producers may run on the server-side to broadcast messages to listening subscribers (consumers).  Publishers many also run inside the browser.  All published messages are sent as JSON strings, routed through the central message hub.
 
 ### Server-side Message Producer
 
@@ -46,11 +46,9 @@ Assuming the service hub already exists, creating a server-side publisher would 
     	message = { "alert":"producer is now active..." };
         
     producer.publish( message );
-    // producer messages are wrapped in JSON with id, ts, hmac and message object
-    // override producer.wrapMessage method to create a custom wrapper
 ~~~
 
-Producer messages are wrapped in JSON with a timestamp, version and the message object.  The wrapper may be customized by overriding producer.wrapMessage.  Current message subscriber/consumers connected to the /MyMessageHub and listening on channel '/mywork-channel' would receive an initial message that looks like this:
+Producer messages are wrapped in JSON with a timestamp, version and the message object.  The wrapper may be customized by overriding producer.wrapMessage.  Current message consumers connected to the /MyMessageHub and listening on channel '/mywork-channel' would receive an initial message that looks like this:
 
 ~~~
 	{
@@ -64,13 +62,13 @@ Producer messages are wrapped in JSON with a timestamp, version and the message 
 
 ### Message Producer in the Browser
 
-- websockets port 80
+- websockets port 80/443
 - create the channel, wait for acknowledgement from hub
-- send messages to subscribers (if any)
+- send messages to consumers (if any)
 
 ## Consumer / Subscriber
 
-Similar to publishers, message subscribers may run either on the server or in the browser.
+Similar to publishers, message consumers may run either on the server or in the browser.  On the server, they listen through the hub's local port.  In the browser they are routed through port 80 (or 443 for ssl).
 
 ### Server-Side Message Subscriber
 
@@ -85,9 +83,11 @@ Similar to publishers, message subscribers may run either on the server or in th
 
 ### Message Subscriber in the Browser
 
-- websockets port 80
+- websockets port 80/443
 - subscribe to a known channel
 - handle incoming messages
+
+
 ## Security
 
 The standard wrapper calculates and includes a message digest when the message provider is created with a digest algorithm and the send method includes a session key.  The session key needs to be common to the producer and consumer through a back channel to enable messages to be verified when received.  Here is a typical configuration and use:
@@ -113,7 +113,7 @@ The wrapped message for this configuration looks similar to this:
     	ts: 1408628111390,
   		version: '1.0',
   		message: 'this is a test message',
-  		hmac: 'b87c0e7777907d438f3c0b3c00c2a8263ce995684193427933d160b94b751831' 
+  		hmac: 'b87c0e7777907d438f3c0b3c00c2a8263ce995684193427933d160b94b751831'
     }
 ~~~
 
@@ -195,8 +195,8 @@ This can only be executed on the serving machine.
 ## Examples
 
 - simple.js : creates a minimal hub, message producer and subscriber
-- publisher.js : creates a message producer to send messages to /test-channel
-- subscriber.js : recieves messages from a publisher on /test-channel
+- producer.js : creates a message producer to send messages to /test-channel
+- consumer.js : recieves messages from a publisher on /test-channel
 - config.js : an example of a typical configuration
 
 ## The bin folder
@@ -220,9 +220,6 @@ Unit tests include should/specs, jshint and validate-package.  Tests can be run 
     grunt mochaTest jshint validate-package
 ~~~
 
-### Integration Tests
-
-*non-automated tests*
 
 - - -
 <p><small><em>Copyright © 2014, rain city software | Version 0.90.05</em></small></p>
