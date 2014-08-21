@@ -3,8 +3,9 @@
 var config = require( __dirname + '/../config.json' ),
     channel = config.channels[ 0 ],
     MessageHub = require( __dirname + '/../index' ),
+    id = 'my-unique-id',
     hub = MessageHub.createInstance( config ),
-    publisher = hub.createProducer( channel ); 
+    publisher = hub.createProducer( channel, id );
 
 setInterval(function() {
     var obj = {

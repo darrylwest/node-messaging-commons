@@ -25,18 +25,23 @@ describe('MessageService', function() {
     };
 
     describe('#instance', function() {
-        var service = new MessageService( createOptions() ),
+        var opts = createOptions(),
+            service = new MessageService( opts ),
             methods = [
                 'onMessage',
                 'publish',
                 'wrapMessage',
                 'getMessageCount',
-                'calculateDigest'
+                'calculateDigest',
+                'getId'
             ];
 
         it('should create an instance of MessageService', function() {
             should.exist( service );
             service.should.be.instanceof( MessageService );
+
+            service.getId().should.equal( opts.mid );
+            service.getMessageCount().should.equal( 0 );
         });
 
         it( 'should contain all known methods based on method count and type', function() {
