@@ -11,16 +11,16 @@ Node messaging commons leverages the [faye](http://faye.jcoglan.com/) pub/sub mo
 ## Installation
 
 ~~~
-	npm install node-message-commons --save
+	npm install node-messaging-commons --save
 ~~~
 
 ## API
 
-The messaging API provides methods to create a message service hub to run on a specified port with a designated name.  The api also provides methods to create server-side message producers and consumers.  There are also support libraries that can be used to create message producers and consumers in the browser.
+The messaging API provides methods to create a message service hub to run on a specified port with a designated hub name.  The API provides methods to create server-side message producers and consumers.  There are also support libraries that can be used to create message producers and consumers in the browser.
 
-The message hub is configurable through any javascriptobject, but may come from an external json file.
+The message hub is configurable through any javascript object, but may come from an external json file.
 
-A typical implementation looks like this:
+A minimal implementation looks like this:
 
 ~~~
 	var MessageHub = require('node-messaging-commons');
@@ -29,7 +29,7 @@ A typical implementation looks like this:
     hub.start();
 ~~~
 
-This small bit of code gets the message backbone hub started.  With a hub in place, you are ready to add producer and consumer channels and exchange messages.
+This small bit of code gets the message hub started.  With a hub in place, you are ready to add producer and consumer channels and exchange messages.
 
 ## Producer / Publisher
 
@@ -41,14 +41,14 @@ Assuming the service hub already exists, creating a server-side publisher would 
 
 ~~~
 	var hub = MessageHub.createInstance({ port:9099, hubName:'/MyMessageHub' });
-        
+
     var producer = hub.createProducer( '/mywork-channel' ),
     	message = { "alert":"producer is now active..." };
-        
+
     producer.publish( message );
 ~~~
 
-Producer messages are wrapped in JSON with a timestamp, version and the message object.  The wrapper may be customized by overriding producer.wrapMessage.  Current message consumers connected to the /MyMessageHub and listening on channel '/mywork-channel' would receive an initial message that looks like this:
+Producer messages are wrapped in JSON with a timestamp, version and the message object.  The wrapper may be customized by overriding the producer's wrapMessage method.  Current message consumers connected to the /MyMessageHub and listening on channel '/mywork-channel' would receive an initial message that looks like this:
 
 ~~~
 	{
