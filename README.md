@@ -206,11 +206,10 @@ This can only be executed on the serving machine.
 
 These scripts are typical start/stop/status and config scripts used as templates for production installations.
 
-- bin/start.js
-- bin/status.js
-- bin/stop.js
-- bin/run.js
-
+- bin/start.js - read the config file and start the message service
+- bin/status.js - return the current message service status
+- bin/stop.js - stop the message service
+- bin/run.js - run in the foreground
 
 ## Tests
 
@@ -231,4 +230,4 @@ Unit tests include should/specs, jshint and validate-package.  Tests can be run 
 
 
 - - -
-<p><small><em>Copyright © 2014, rain city software | Version 0.90.12</em></small></p>
+<p><small><em>Copyright © 2014, rain city software | Version 0.90.13</em></small></p>
