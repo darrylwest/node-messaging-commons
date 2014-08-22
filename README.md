@@ -1,6 +1,7 @@
 # Node Message Commons
 - - -
 
+[![NPM version](https://badge.fury.io/js/node-messaging-commons.svg)](http://badge.fury.io/js/node-messaging-commons)
 [![Build Status](https://travis-ci.org/darrylwest/node-messaging-commons.svg?branch=master)](https://travis-ci.org/darrylwest/node-messaging-commons)
 
 A websocket library of pub/sub support for secure web socket messaging.
