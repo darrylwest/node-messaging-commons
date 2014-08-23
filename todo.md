@@ -1,7 +1,7 @@
 # Node Messaging Commons To Do List
 - - -
 
-- implement use background service with daemon flag
+- add events onConnect to message service
 - create demo (3DPong, VectorPong)
 
 - - -

@@ -1,6 +1,6 @@
 {
   "name": "node-messaging-commons",
-  "version": "00.90.16",
+  "version": "00.90.17",
   "description": "A websocket library of pub/sub support for secure web socket messaging.",
   "main": "index.js",
   "repository": {
