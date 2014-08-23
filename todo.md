@@ -1,10 +1,8 @@
-# Node Messaging Commons
+# Node Messaging Commons To Do List
 - - -
 
-- create status script
-- create stop script
 - implement use background service with daemon flag
-- create demo
+- create demo (3DPong, VectorPong)
 
 - - -
-<p><small><em>last updated Aug 20, 2014</em></small></p>
+<p><small><em>last updated Aug 23, 2014</em></small></p>
