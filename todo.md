@@ -1,7 +1,8 @@
 # Node Messaging Commons To Do List
 - - -
 
-- add gated message logic to examples
+- add gated message logic examples 
+- gatekeeper channel; randomly send messages from consumers to get response from gatekeeper ; if token matches then accept, else reject
 - create demo (3DPong, VectorPong)
 
 - - -
