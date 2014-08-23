@@ -115,9 +115,9 @@ The wrapped message for this configuration looks similar to this:
 ~~~
 	{
     	ts: 1408628111390,
-  		version: '1.0',
-  		message: 'this is a test message',
-  		hmac: 'b87c0e7777907d438f3c0b3c00c2a8263ce995684193427933d160b94b751831'
+		version: '1.0',
+		message: 'this is a test message',
+		hmac: 'b87c0e7777907d438f3c0b3c00c2a8263ce995684193427933d160b94b751831'
     }
 ~~~
 
@@ -134,7 +134,7 @@ A configuration object specifies the machine port, the hub name and other parame
 
 This defines a message hub listening on port 23442 with a name of MyMessageHub and accepting pub/sub messages on any defined channel channels.
 
-A more robust solution would specify a logger and other parameters like a list of valid channel names.  It would look like this:
+A more robust solution would specify a logger, run as a daemon, and specify other parameters like a list of valid channel names.  It would possibly look like this:
 
 ~~~
 	var Config = function() {
@@ -163,7 +163,7 @@ Then creating the hub would be done with:
 	var Config = require('./Config')
 ~~~
 
-See the *examples* folder for a fully implemented example.
+See the *examples* and *bin* folders for a fully implemented examples and start/stop/run scripts.
 
 ## Message Hub Status
 
@@ -231,4 +231,4 @@ Unit tests include should/specs, jshint and validate-package.  Tests can be run 
 
 
 - - -
-<p><small><em>Copyright © 2014, rain city software | Version 0.90.15</em></small></p>
+<p><small><em>Copyright © 2014, rain city software | Version 0.90.16</em></small></p>
