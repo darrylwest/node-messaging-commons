@@ -34,6 +34,7 @@ describe('MessageSocketService', function() {
                 'unsubscribeHandler',
                 'disconnectHandler',
                 'createStatusMessage',
+                'formatElapsedTime',
                 'shutdown'
             ];
 

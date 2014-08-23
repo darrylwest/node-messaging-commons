@@ -1,6 +1,7 @@
 # Node Messaging Commons To Do List
 - - -
 
+- add gated message logic to examples
 - create demo (3DPong, VectorPong)
 
 - - -
