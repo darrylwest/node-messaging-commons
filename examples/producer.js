@@ -7,9 +7,9 @@ var config = require( __dirname + '/../config.json' ),
     hub = MessageHub.createInstance( config ),
     publisher = hub.createProducer( channel, id );
 
+
 setInterval(function() {
     var model = {
-        publisherMessage:'hi',
         created:new Date().toJSON(),
         count:publisher.getMessageCount()
     };
@@ -18,6 +18,8 @@ setInterval(function() {
 
     // send the message model and use the app key as session for hmac
     publisher.publish( model, config.appkey );
-}, 1000);
+}, 30000);
 
+
+publisher.publish( 'channel now active', config.appkey );
 

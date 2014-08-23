@@ -4,14 +4,15 @@ var config = require( __dirname + '/../config.json' ),
     channel = config.channels[ 0 ],
     MessageHub = require( __dirname + '/../index' ),
     hub = MessageHub.createInstance( config ),
-    consumer = hub.createConsumer( channel );
+    id = 'MsgConsumerThread',
+    consumer = hub.createConsumer( channel, id );
 
 consumer.onConnect(function(chan) {
-    console.log('connected to ', chann);
-    consumer.send( { myid:'123456', say:'howdy!' } );
+    console.log('!!!! now connected to ', chan);
+    consumer.publish( { myid:id, say:'howdy! from ' + id } );
 });
 
 consumer.onMessage(function(message) {
-    console.log( message );
+    console.log( '>>> message recieved: ', message );
 });
 

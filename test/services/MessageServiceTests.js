@@ -19,7 +19,7 @@ describe('MessageService', function() {
         opts.log = MockLogger.createLogger('MessageService');
         opts.client = new MockMessageClient();
         opts.channel = '/test-channel';
-        opts.mid = 'my-unique-id';
+        opts.ssid = 'my-unique-id';
 
         return opts;
     };
@@ -41,7 +41,7 @@ describe('MessageService', function() {
             should.exist( service );
             service.should.be.instanceof( MessageService );
 
-            service.getId().should.equal( opts.mid );
+            service.getId().should.equal( opts.ssid );
             service.getMessageCount().should.equal( 0 );
         });
 
@@ -61,7 +61,7 @@ describe('MessageService', function() {
                 obj = service.wrapMessage( model );
 
             should.exist( obj );
-            obj.mid.should.equal( opts.mid );
+            obj.ssid.should.equal( opts.ssid );
             obj.ts.should.be.above( Date.now() - 20000 );
             obj.version.should.equal( '1.0' );
             obj.message.should.equal( model );

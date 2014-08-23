@@ -82,7 +82,6 @@ Similar to publishers, message consumers may run either on the server or in the 
     
     consumer.onConnect(function(chan) {
     	console.log( 'now accepting messages from ', chan);
-        consumer.send('hello...');
     });
     
     consumer.onMessage(function(msg) {
@@ -237,4 +236,4 @@ Unit tests include should/specs, jshint and validate-package.  Tests can be run 
 
 
 - - -
-<p><small><em>Copyright © 2014, rain city software | Version 0.90.18</em></small></p>
+<p><small><em>Copyright © 2014, rain city software | Version 0.90.19</em></small></p>
