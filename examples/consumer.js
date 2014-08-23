@@ -4,7 +4,8 @@ var config = require( __dirname + '/../config.json' ),
     channel = config.channels[ 0 ],
     MessageHub = require( __dirname + '/../index' ),
     hub = MessageHub.createInstance( config ),
-    id = 'MsgConsumerThread',
+    casual = require('casual'),
+    id = 'c' + casual.array_of_digits( 10 ).join(''),
     consumer = hub.createConsumer( channel, id );
 
 consumer.onConnect(function(chan) {
