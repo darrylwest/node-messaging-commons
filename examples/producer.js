@@ -7,7 +7,6 @@ var config = require( __dirname + '/../config.json' ),
     hub = MessageHub.createInstance( config ),
     publisher = hub.createProducer( channel, id );
 
-
 setInterval(function() {
     var model = {
         created:new Date().toJSON(),
@@ -18,8 +17,15 @@ setInterval(function() {
 
     // send the message model and use the app key as session for hmac
     publisher.publish( model, config.appkey );
-}, 30000);
+}, 15000);
 
+publisher.onConnect(function() {
+    // this should never fire because connect events are just for consumers
+    console.log('!!!!! publisher is now connected !!!!!!');
+});
 
-publisher.publish( 'channel now active', config.appkey );
+process.nextTick(function() {
+    console.log( 'send the hello message...');
+    publisher.publish( 'PRODUCER channel now active', config.appkey );
+});
 
