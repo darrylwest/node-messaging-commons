@@ -73,13 +73,19 @@ _\* demo available soon..._
 
 Similar to publishers, message consumers may run either on the server or in the browser.  On the server, they listen through the hub's local port.  In the browser they are routed through port 80 (or 443 for ssl).
 
-### Server-Side Message Subscriber
+### Server-Side Message Consumer / Subscriber
 
 ~~~
 	var hub = MessageHub.createInstance({ port:9099, hubName:'/MyMessageHub' });
 
     var consumer = hub.createConsumer( 'mywork-channel' );
-    consumer.onMessage, function(msg)) {
+    
+    consumer.onConnect(function(chan) {
+    	console.log( 'now accepting messages from ', chan);
+        consumer.send('hello...');
+    });
+    
+    consumer.onMessage(function(msg) {
     	// producer messages are wrapped in JSON with id, ts, hmac, and message object
     });
 ~~~
@@ -231,4 +237,4 @@ Unit tests include should/specs, jshint and validate-package.  Tests can be run 
 
 
 - - -
-<p><small><em>Copyright © 2014, rain city software | Version 0.90.17</em></small></p>
+<p><small><em>Copyright © 2014, rain city software | Version 0.90.18</em></small></p>

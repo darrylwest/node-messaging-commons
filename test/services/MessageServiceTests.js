@@ -29,6 +29,7 @@ describe('MessageService', function() {
             service = new MessageService( opts ),
             methods = [
                 'onMessage',
+                'onConnect',
                 'publish',
                 'wrapMessage',
                 'getMessageCount',
