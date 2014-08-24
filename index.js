@@ -2,3 +2,9 @@
 
 module.exports = require('./lib/MessageHub');
 
+module.exports = {
+    mocks: {
+        MockMessageClient:require('./test/mocks/MockMessageClient')
+    }
+};
+

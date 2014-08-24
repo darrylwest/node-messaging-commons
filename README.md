@@ -234,6 +234,16 @@ Unit tests include should/specs, jshint and validate-package.  Tests can be run 
     grunt mochaTest jshint validate-package
 ~~~
 
+### Mocks
+
+There is a single mock called MockMessageClient.  You access it like this:
+
+~~~
+	var MockMessageClient = require('node-messaging-commons').mocks.MockMessageClient;
+    
+    var mock = new MockMessageClient();
+    
+~~~
 
 - - -
-<p><small><em>Copyright © 2014, rain city software | Version 0.90.24</em></small></p>
+<p><small><em>Copyright © 2014, rain city software | Version 0.90.25</em></small></p>
