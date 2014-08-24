@@ -1,8 +1,8 @@
 /**
+ * Standard Grunt file
  *
- *
- * @author: darryl.west@roundpeg.com
- * @created: 12/30/13 9:30 AM
+ * @author: darryl.west@raincitysoftware.com
+ * @created: 2014.08.22 9:30 AM
  */
 module.exports = function(grunt) {
     'use strict';
