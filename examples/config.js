@@ -9,7 +9,7 @@ module.exports.readMessageHubConfig = function() {
     var config = {};
 
     config.port = 29169;
-    config.hubName = '/ExampleMessageHub';
+    config.hubName = '/MessageHub';
     config.channels = [ 'user', 'bugs', 'blog', 'chat' ];
 
     // other security configurations...

@@ -8,7 +8,7 @@ module.exports.readMessageHubConfig = function() {
     var config = {};
 
     config.port = 29169;
-    config.hubName = '/ExampleMessageHub';
+    config.hubName = '/MessageHub';
     config.channels = [ 'heartbeat', 'user', 'bugs', 'blog', 'chat' ];
 
     config.daemon = true;
