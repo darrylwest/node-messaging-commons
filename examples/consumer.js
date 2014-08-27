@@ -6,7 +6,8 @@ var config = require( __dirname + '/../config.json' ),
     hub = MessageHub.createInstance( config ),
     casual = require('casual'),
     id = 'c' + casual.array_of_digits( 10 ).join(''),
-    consumer = hub.createConsumer( channel, id );
+    consumer = hub.createConsumer( channel, id ),
+    messageCount = 0;
 
 consumer.onConnect(function(chan) {
     console.log('!!!! now connected to ', chan);
@@ -15,5 +16,9 @@ consumer.onConnect(function(chan) {
 
 consumer.onMessage(function(message) {
     console.log( '>>> message recieved: ', message );
+    if (messageCount++ > 2) {
+        consumer.close();
+        console.log('\n\nconnection closed, hit ctrl-c to quit...\n');
+    }
 });
 

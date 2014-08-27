@@ -34,6 +34,7 @@ describe('MessageService', function() {
                 'wrapMessage',
                 'getMessageCount',
                 'calculateDigest',
+                'close',
                 'getId'
             ];
 
