@@ -13,7 +13,8 @@
 
             options.log = RemoteLogger.createLogger('TestMessageClient');
 
-            client = AbstractMessageClient.extend( {}, options );
+            client = {};
+            AbstractMessageClient.extend( client, options );
 
             client.subscribe('/heartbeat', function(msg) {
                 options.log.info('heartbeat msg: ', JSON.stringify( msg ));

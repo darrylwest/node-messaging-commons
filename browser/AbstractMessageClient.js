@@ -92,7 +92,9 @@ AbstractMessageClient.extend = function(child, options) {
 
     var parent = new AbstractMessageClient( options );
 
-
+    [ 'subscribe', 'publish', 'createHub', 'wrapMessage' ].forEach(function(method) {
+        child[ method ] = parent[ method ];
+    });
 
     return parent;
 };
