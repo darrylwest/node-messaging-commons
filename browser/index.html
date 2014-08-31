@@ -2,22 +2,14 @@
 <html>
 <head>
     <title>test messaging page</title>
-    <script src="faye-browser.js"></script>
-    <script src="RemoteLogger.js"></script>
-    <script src="hmac-sha256.js"></script>
-    <script src="AbstractMessageClient.js"></script>
+    <script src="browser-messaging-commons.js"></script>
+    <script src="messaging-config.js"></script>
     <script>
         var client;
 
         var startClient = function() {
-            // simulate a concrete class
-            var options = {
-                    "socketHost":"http://localhost:29169",
-                    "port":29169,
-                    "hubName":"/MessageHub",
-                    "algorithm":"sha256",
-                    "appkey":"d6527612-55e9-4e10-8d4c-2979a979928a"
-                };
+            // read from the
+            var options = readMessagingConfig();
 
             options.log = RemoteLogger.createLogger('TestMessageClient');
 
