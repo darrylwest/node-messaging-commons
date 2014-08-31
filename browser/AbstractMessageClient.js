@@ -35,6 +35,23 @@ var AbstractMessageClient = function(options) {
     };
 
     /**
+     * wrap the request message and publish to the specified channel
+     *
+     * @param channel - the channel name
+     * @param id - the ssid
+     * @param request - the message body
+     */
+    this.publish = function(channel, id, request) {
+        var message = client.wrapMessage(id, request);
+
+        if (log.isDebug()) {
+            log.debug('publish to ', channel, ', message: ', JSON.stringify( message ));
+        }
+
+        hub.publish( channel, message );
+    };
+
+    /**
      * create the message hub from socket host
      *
      * @returns the message hub

@@ -26,6 +26,7 @@
     "white": false,
     "curly": false,
     "globals": {
+        "Faye":true,
         "describe":true,
         "should":true,
         "it":true,

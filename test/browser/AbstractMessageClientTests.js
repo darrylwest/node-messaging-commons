@@ -26,6 +26,7 @@ describe('AbstractMessageClient', function() {
             methods = [
                 'subscribe',
                 'createHub',
+                'publish',
                 'wrapMessage'
             ];
 
