@@ -202,10 +202,15 @@ This can only be executed on the serving machine.
 
 ## Examples
 
+### Server Examples
 - simple.js : creates a minimal hub, message producer and subscriber
 - producer.js : creates a message producer to send messages to /test-channel
 - consumer.js : recieves messages from a publisher on /test-channel
 - config.js : an example of a typical configuration
+
+### Browser Examples
+
+There is an index file with a test message page.
 
 ## The bin folder
 
