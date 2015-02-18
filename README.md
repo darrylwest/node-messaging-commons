@@ -250,4 +250,4 @@ There is a single mock called MockMessageClient.  You access it like this:
 ~~~
 
 - - -
-<p><small><em>Copyright © 2014-2015, rain city software | Version 0.90.37</em></small></p>
+<p><small><em>Copyright © 2014-2015, rain city software | Version 0.90.38</em></small></p>

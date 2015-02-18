@@ -1,6 +1,6 @@
 {
   "name": "node-messaging-commons",
-  "version": "00.90.37",
+  "version": "00.90.38",
   "description": "A websocket library of pub/sub support for secure web socket messaging.",
   "main": "index.js",
   "repository": {
@@ -20,12 +20,12 @@
   ],
   "dependencies": {
     "background-service-runner": "^0.90.20",
-    "commander": "^2.3.0",
+    "commander": "^2.6.0",
     "faye": "^1.1.0",
     "lodash": "^3.0.0",
     "moment": "^2.8.1",
-    "node-uuid": "~1.4.1",
-    "simple-node-logger": "^0.92.15"
+    "node-uuid": "^1.4.2",
+    "simple-node-logger": "^0.92.16"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
