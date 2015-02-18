@@ -20,11 +20,14 @@ module.exports.readMessageHubConfig = function() {
         var opts = {
             logDirectory: process.env.HOME + '/logs',
             fileNamePattern:[ 'messages-', config.port, '-<DATE>.log' ].join(''),
-            dateFormat:'YYYY.MM.DD',
-            level:'info',
-            loggerConfigFile: __dirname + '/logger-config.json',
-            refresh:120 * 1000 // re-read the config json file each 120 seconds
+            dateFormat:'YYYY.MM.DD'
         };
+
+        if (false) {
+            opts.appenderslevel = 'info',
+            opts.loggerConfigFile = __dirname + '/logger-config.json',
+            opts.refresh = 120 * 1000 // re-read the config json file each 120 seconds
+        }
 
         return opts;
     };
