@@ -1,5 +1,7 @@
 /**
- * AbstractMessageClient - browser side base class
+ * @class AbstractMessageClient
+ * @classdesc browser side base class to enable subscribe, publish, wrap, etc; may also be used as a
+ * remote message client that runs on a remote host that communicates through the main hub.
  *
  * @author: darryl.west@roundpeg.com
  * @created: 8/31/14
