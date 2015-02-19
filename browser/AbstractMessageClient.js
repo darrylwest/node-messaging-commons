@@ -43,8 +43,8 @@ var AbstractMessageClient = function(options) {
      * @param id - the ssid
      * @param request - the message body
      */
-    this.publish = function(channel, id, request) {
-        var message = client.wrapMessage(id, request);
+    this.publish = function(channel, ssid, request) {
+        var message = client.wrapMessage(ssid, request);
 
         if (log.isDebug()) {
             log.debug('publish to ', channel, ', message: ', JSON.stringify( message ));
@@ -67,19 +67,19 @@ var AbstractMessageClient = function(options) {
     };
 
     /**
-     * create the standard wrapper
+     * create the standard wrapper.  NOTE does not include hmac digest
      *
      * @param request a request object
      * @returns the wrapped message request
      */
-    this.wrapMessage = function(id, request) {
+    this.wrapMessage = function(model, session) {
         var message = {
             ts:Date.now(),
-            message:request
+            message:model
         };
 
-        if (id) {
-            message.id = id;
+        if (session) {
+            message.ssid = session;
         }
 
         return message;

@@ -2,6 +2,11 @@
 
 module.exports = require('./lib/MessageHub');
 
+module.exports.services = {
+    MessageService:require('./lib/services/MessageService'),
+    MessageSocketService:require('./lib/services/MessageSocketService')
+};
+
 module.exports.browser = {
     AbstractMessageClient:require('./browser/AbstractMessageClient')
 };
