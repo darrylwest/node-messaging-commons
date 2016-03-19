@@ -45,7 +45,7 @@ describe('MessageSocketService', function() {
         });
 
         it('should have all known methods', function() {
-            dash.methods( service ).length.should.equal( methods.length );
+            dash.functions( service ).length.should.equal( methods.length );
 
             methods.forEach(function(method) {
                 service[ method ].should.be.a('function');

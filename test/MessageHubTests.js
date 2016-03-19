@@ -48,7 +48,7 @@ describe('MessageHub', function() {
         });
 
         it('should have all known methods by size', function() {
-            dash.methods( hub ).length.should.equal( methods.length );
+            dash.functions( hub ).length.should.equal( methods.length );
 
             methods.forEach(function(method) {
                 hub[ method ].should.be.a('function');

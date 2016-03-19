@@ -36,7 +36,7 @@ describe('AbstractMessageClient', function() {
         });
 
         it( 'should contain all known methods based on method count and type', function() {
-            dash.methods( client ).length.should.equal( methods.length );
+            dash.functions( client ).length.should.equal( methods.length );
             methods.forEach(function(method) {
                 client[ method ].should.be.a('function');
             });

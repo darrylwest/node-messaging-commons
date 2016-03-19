@@ -47,7 +47,7 @@ describe('MessageService', function() {
         });
 
         it( 'should contain all known methods based on method count and type', function() {
-            dash.methods( service ).length.should.equal( methods.length );
+            dash.functions( service ).length.should.equal( methods.length );
             methods.forEach(function(method) {
                 service[ method ].should.be.a('function');
             });

@@ -40,7 +40,7 @@ describe('ApplicationFactory', function() {
         });
 
         it('should have all known methods by size', function() {
-            dash.methods( factory ).length.should.equal( methods.length );
+            dash.functions( factory ).length.should.equal( methods.length );
 
             methods.forEach(function(method) {
                 factory[ method ].should.be.a('function');
