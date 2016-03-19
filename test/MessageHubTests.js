@@ -4,7 +4,7 @@
  * @author: darryl.west@raincitysoftware.com
  * @created: 8/18/14
  */
-var should = require('chai').should(),
+const should = require('chai').should(),
     dash = require('lodash'),
     MockLogger = require('simple-node-logger').mocks.MockLogger,
     MessageHub = require('../lib/MessageHub'),
@@ -13,8 +13,8 @@ var should = require('chai').should(),
 describe('MessageHub', function() {
     'use strict';
 
-    var createOptions = function() {
-        var opts = {};
+    const createOptions = function() {
+        const opts = {};
 
         opts.log = MockLogger.createLogger('MessageHub');
         opts.port = 23442;
@@ -28,7 +28,7 @@ describe('MessageHub', function() {
     };
 
     describe('#instance', function() {
-        var opts = createOptions(),
+        const opts = createOptions(),
             hub = new MessageHub( opts ),
             methods = [
                 'start',
@@ -58,7 +58,7 @@ describe('MessageHub', function() {
 
     describe('createInstance', function() {
         it('should create an instance of message hub with a simple logger', function() {
-            var opts = {
+            const opts = {
                     port:4321,
                     hubName:'testHub'
                 },
@@ -73,20 +73,20 @@ describe('MessageHub', function() {
     });
 
     describe('createProducer', function() {
-        var hub = new MessageHub( createOptions() );
+        const hub = new MessageHub( createOptions() );
 
         it('should create a message producer for a given channel', function() {
-            var producer = hub.createProducer( 'mychannel' );
+            const producer = hub.createProducer( 'mychannel' );
 
             should.exist( producer );
         });
     });
 
     describe('createConsumer', function() {
-        var hub = new MessageHub( createOptions() );
+        const hub = new MessageHub( createOptions() );
 
         it('should create a message consumer for a channel', function() {
-            var consumer = hub.createConsumer( 'mychannel' );
+            const consumer = hub.createConsumer( 'mychannel' );
 
             should.exist( consumer );
         });

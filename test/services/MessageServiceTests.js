@@ -4,7 +4,7 @@
  * @author: darryl.west@raincitysoftware.com
  * @created: 8/20/14
  */
-var should = require('chai').should(),
+const should = require('chai').should(),
     dash = require('lodash'),
     MockLogger = require('simple-node-logger').mocks.MockLogger,
     MockMessageClient = require('../mocks/MockMessageClient'),
@@ -13,8 +13,8 @@ var should = require('chai').should(),
 describe('MessageService', function() {
     'use strict';
 
-    var createOptions = function() {
-        var opts = {};
+    const createOptions = function() {
+        const opts = {};
 
         opts.log = MockLogger.createLogger('MessageService');
         opts.client = new MockMessageClient();
@@ -25,7 +25,7 @@ describe('MessageService', function() {
     };
 
     describe('#instance', function() {
-        var opts = createOptions(),
+        const opts = createOptions(),
             service = new MessageService( opts ),
             methods = [
                 'onMessage',
@@ -56,7 +56,7 @@ describe('MessageService', function() {
 
     describe('wrapMessage', function() {
         it('should wrap a message object with a standard wrapper', function() {
-            var opts = createOptions(),
+            const opts = createOptions(),
                 service = new MessageService( opts ),
                 model = 'this is a test message',
                 obj = service.wrapMessage( model );
@@ -69,15 +69,13 @@ describe('MessageService', function() {
         });
 
         it('should wrap a message and calculate the message digest', function() {
-            var opts = createOptions(),
-                session = '1234567890',
-                service,
-                model = { alert:'this is a complex message', warning:'danger' },
-                obj;
+            const opts = createOptions(),
+                session = '1234567890', 
+                model = { alert:'this is a complex message', warning:'danger' };
 
             opts.algorithm = 'sha256';
-            service = new MessageService( opts );
-            obj = service.wrapMessage( model, session );
+            let service = new MessageService( opts );
+            let obj = service.wrapMessage( model, session );
 
             should.exist( obj );
             should.exist( obj.hmac );

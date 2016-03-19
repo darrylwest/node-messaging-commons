@@ -4,7 +4,7 @@
  * @author: darryl.west@raincitysoftware.com
  * @created: 2014-08-17
  */
-var should = require('chai').should(),
+const should = require('chai').should(),
     dash = require('lodash'),
     MockLogger = require('simple-node-logger').mocks.MockLogger,
     MessageSocketService = require('../../lib/services/MessageSocketService');
@@ -12,8 +12,8 @@ var should = require('chai').should(),
 describe('MessageSocketService', function() {
     'use strict';
 
-    var createOptions = function() {
-        var opts = {};
+    const createOptions = function() {
+        const opts = {};
 
         opts.version = '00.90.99';
         opts.port = 29169;
@@ -26,7 +26,7 @@ describe('MessageSocketService', function() {
     };
 
     describe('#instance', function() {
-        var service = new MessageSocketService( createOptions()),
+        const service = new MessageSocketService( createOptions()),
             methods = [
                 'start',
                 'serverPageCallback',
@@ -54,11 +54,11 @@ describe('MessageSocketService', function() {
     });
 
     describe('createStatusMessage', function() {
-        var options = createOptions(),
+        const options = createOptions(),
             service = new MessageSocketService( options );
 
         it('should create a standard status message', function() {
-            var status = service.createStatusMessage();
+            const status = service.createStatusMessage();
 
             should.exist( status );
 

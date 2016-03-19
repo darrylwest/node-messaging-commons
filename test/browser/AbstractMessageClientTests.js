@@ -3,7 +3,7 @@
  * @author: darryl.west@roundpeg.com
  * @created: 8/31/14
  */
-var should = require('chai').should(),
+const should = require('chai').should(),
     dash = require('lodash'),
     MockLogger = require('simple-node-logger').mocks.MockLogger,
     AbstractMessageClient = require('../../browser/AbstractMessageClient');
@@ -11,8 +11,8 @@ var should = require('chai').should(),
 describe('AbstractMessageClient', function() {
     'use strict';
 
-    var createOptions = function() {
-        var opts = {};
+    const createOptions = function() {
+        const opts = {};
 
         opts.log = MockLogger.createLogger('AbstractMessageClient');
         opts.hub = {};
@@ -22,7 +22,7 @@ describe('AbstractMessageClient', function() {
     };
 
     describe('#instance', function() {
-        var client = new AbstractMessageClient( createOptions()),
+        const client = new AbstractMessageClient( createOptions()),
             methods = [
                 'subscribe',
                 'createHub',

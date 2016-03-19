@@ -4,7 +4,7 @@
  * @author: darryl.west@raincitysoftware.com
  * @created: 2014-08-17
  */
-var should = require('chai').should(),
+const should = require('chai').should(),
     dash = require('lodash'),
     MockLogger = require('simple-node-logger').mocks.MockLogger,
     MessageService = require('../../lib/services/MessageService'),
@@ -14,8 +14,8 @@ var should = require('chai').should(),
 describe('ApplicationFactory', function() {
     'use strict';
 
-    var createOptions = function() {
-        var opts = {};
+    const createOptions = function() {
+        const opts = {};
 
         opts.logManager = MockLogger;
         opts.port = 23442;
@@ -25,7 +25,7 @@ describe('ApplicationFactory', function() {
     };
 
     describe('#instance', function() {
-        var factory = new ApplicationFactory( createOptions()),
+        const factory = new ApplicationFactory( createOptions()),
             methods = [
                 'createMessageSocketService',
                 'createMessageService',
@@ -49,10 +49,10 @@ describe('ApplicationFactory', function() {
     });
 
     describe('createMessageSocketService', function() {
-        var factory = new ApplicationFactory( createOptions() );
+        const factory = new ApplicationFactory( createOptions() );
 
         it('should create an instance of message socket service', function() {
-            var service = factory.createMessageSocketService();
+            const service = factory.createMessageSocketService();
 
             should.exist( service );
             service.should.be.instanceof( MessageSocketService );
@@ -62,7 +62,7 @@ describe('ApplicationFactory', function() {
     describe('createMessageService', function() {
 
         it('should create an instance of message service', function() {
-            var opts = createOptions(),
+            const opts = createOptions(),
                 factory = new ApplicationFactory( opts),
                 channel = '/flarb',
                 service = factory.createMessageService( channel );

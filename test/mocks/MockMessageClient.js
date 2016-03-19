@@ -3,13 +3,14 @@
  * @author: darryl.west@raincitysoftware.com
  * @created: 8/20/14
  */
-var dash = require('lodash');
+const dash = require('lodash');
 
-var MockMessageClient = function() {
+const MockMessageClient = function() {
     'use strict';
 
-    var client = this,
-        messageCallback;
+    const client = this;
+
+    let messageCallback;
 
     this.channel = null;
 
