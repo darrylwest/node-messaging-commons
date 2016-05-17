@@ -1,3 +1,8 @@
+JSFILES=bin/*.js lib/*/*.js lib/*.js test/*.js test/*/*.js
+TESTFILES=test/*.js test/controllers/*.js test/browser/*.js test/services/*.js
+JSHINT=node_modules/.bin/jshint
+MOCHA=node_modules/.bin/mocha
+
 install:
 	@make npm
 	@( [ -d logs ] || mkdir logs )
@@ -5,11 +10,15 @@ install:
 npm:
 	@npm install
 
+jshint:
+	@( $(JSHINT) --verbose --reporter node_modules/jshint-stylish/ $(TESTFILES) $(JSFILES) )
+
 test:
-	@grunt test
+	@( $(MOCHA) $(TESTFILES) )
+	@( make jshint )
 
 watch:
-	@grunt server
+	@( node ./watcher.js )
 
 browser:
 	cat browser/AbstractMessageClient.js browser/RemoteLogger.js browser/faye-browser.js > browser/browser-messaging-commons.js

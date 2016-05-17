@@ -16,7 +16,7 @@ consumer.onConnect(function(chan) {
 
 consumer.onMessage(function(message) {
     console.log( '>>> message recieved: ', message );
-    if (messageCount++ > 2) {
+    if (messageCount++ > 2000) {
         consumer.close();
         console.log('\n\nconnection closed, hit ctrl-c to quit...\n');
     }

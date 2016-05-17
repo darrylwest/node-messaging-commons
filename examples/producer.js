@@ -25,7 +25,7 @@ setInterval(function() {
 
     // send the message model and use the app key as session for hmac
     publisher.publish( model, config.appkey );
-}, 2000);
+}, 100);
 
 publisher.onConnect(function() {
     // this should never fire because connect events are just for consumers

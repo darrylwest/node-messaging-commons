@@ -18,7 +18,7 @@ npm install node-messaging-commons --save
 
 The messaging API provides methods to create a message service hub to run on a specified port with a designated hub name.  The API provides methods to create server-side message producers and consumers.  There are also support libraries that can be used to create message producers and consumers in the browser.
 
-The message hub is configurable through any javascript object, but may come from an external json file.
+The message hub is configurable through any javascript object, but may come from an external JSON file.
 
 A minimal implementation looks like this:
 
@@ -181,7 +181,7 @@ And a response (without any subscribers) looks something like this:
 
 ~~~
 {
-	"version": "00.90.05",
+	"version": "00.91.11",
 	"hubName": "/ExampleMessageHub",
 	"subscribers": {}
 }
@@ -232,10 +232,6 @@ make test
 // or
 
 make watch
-
-// or
-
-grunt mochaTest jshint validate-package
 ~~~
 
 ### Mocks
@@ -250,4 +246,4 @@ const mock = new MockMessageClient();
 ~~~
 
 - - -
-<p><small><em>Copyright © 2014-2016, rain city software | Version 0.91.10</em></small></p>
+###### Copyright © 2014-2016, rain city software | Version 0.91.11

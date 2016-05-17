@@ -24,9 +24,9 @@ module.exports.readMessageHubConfig = function() {
         };
 
         if (false) {
-            opts.appenderslevel = 'info',
-            opts.loggerConfigFile = __dirname + '/logger-config.json',
-            opts.refresh = 120 * 1000 // re-read the config json file each 120 seconds
+            opts.appenderslevel = 'info';
+            opts.loggerConfigFile = __dirname + '/logger-config.json';
+            opts.refresh = 120 * 1000; // re-read the config json file each 120 seconds
         }
 
         return opts;
