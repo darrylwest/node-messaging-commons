@@ -75,7 +75,7 @@ Similar to publishers, message consumers may run either on the server or in the 
 ### Server-Side Message Consumer / Subscriber
 
 ~~~
-iconst hub = MessageHub.createInstance({ port:9099, hubName:'/MyMessageHub' });
+const hub = MessageHub.createInstance({ port:9099, hubName:'/MyMessageHub' });
 
 const consumer = hub.createConsumer( 'mywork-channel' );
     
@@ -246,4 +246,4 @@ const mock = new MockMessageClient();
 ~~~
 
 - - -
-###### Copyright © 2014-2016, rain city software | Version 0.91.11
+###### Copyright © 2014-2016, rain city software | Version 0.91.14
