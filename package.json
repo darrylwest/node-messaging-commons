@@ -8,7 +8,7 @@
     "url": "https://github.com/darrylwest/node-messaging-commons.git"
   },
   "scripts": {
-    "test": "grunt testAll"
+    "test": "make test"
   },
   "keywords": [
     "message",
