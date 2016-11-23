@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var config = require( __dirname + '/../config.json' ),
-    uuid = require('node-uuid'),
+    uuid = require('uuid'),
     channel = config.channels[ 0 ],
     MessageHub = require( __dirname + '/../index' ),
     casual = require('casual'),

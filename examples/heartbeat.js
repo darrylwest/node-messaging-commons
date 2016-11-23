@@ -5,7 +5,7 @@
 'use strict';
 
 var config = require( __dirname + '/../config.json' ),
-    uuid = require('node-uuid'),
+    uuid = require('uuid'),
     channel = '/heartbeat',
     MessageHub = require( __dirname + '/../index' ),
     casual = require('casual'),
