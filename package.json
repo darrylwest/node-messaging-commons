@@ -24,8 +24,8 @@
     "faye": "^1.1.2",
     "lodash": "^4.5.0",
     "moment": "^2.12.0",
-    "node-uuid": "^1.4.7",
-    "simple-node-logger": "^0.93.11"
+    "simple-node-logger": "^0.93.11",
+    "uuid": "^3.0.0"
   },
   "devDependencies": {
     "casual": "^1.5.1",
